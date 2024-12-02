@@ -41,7 +41,7 @@ app.use(session({
   }));
 
 const corsOptions = {
-    origin : "https://nirjay-events-sygn.vercel.app/",   // Allowing server to accept request from 3000 proxy
+    origin : "https://nirjay-events-sygn-5iz8w3p9n-nrv28s-projects.vercel.app/",   // Allowing server to accept request from 3000 proxy
     methods : "GET,POST,PUT,DELETE,PATCH,HEAD",
     credentials : true
 };
