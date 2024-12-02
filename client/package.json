@@ -49,5 +49,5 @@
   "devDependencies": {
     "tailwindcss": "^3.4.4"
   },
-  "proxy": "https://nirjay-events.vercel.app/"
+  "proxy": "https://nrvevents.onrender.com/"
 }
