@@ -41,7 +41,7 @@ app.use(session({
   }));
 
 const corsOptions = {
-    origin : "http://localhost:3000",   // Allowing server to accept request from 3000 proxy
+    origin : "*",   // Allowing server to accept request from 3000 proxy
     methods : "GET,POST,PUT,DELETE,PATCH,HEAD",
     credentials : true
 };
@@ -49,7 +49,9 @@ app.use(cors(corsOptions));
 
 
 // Routes----------------------------------------------------------------------------------------------------------------------------------------
-
+app.get('/',(req,res){
+    res.send("Backend Working Normally");
+});    
 app.use('/',FetchPartnerData);
 app.use('/',Partneruploadroute);
 app.use('/',AuthenticationRoute);
