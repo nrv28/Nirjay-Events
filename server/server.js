@@ -49,7 +49,7 @@ app.use(cors(corsOptions));
 
 
 // Routes----------------------------------------------------------------------------------------------------------------------------------------
-app.get('/',(req,res){
+app.get('/',(req,res)=>{
     res.send("Backend Working Normally");
 });    
 app.use('/',FetchPartnerData);
