@@ -30,7 +30,7 @@ function UploadForm() {
     }
 
     try {
-      await axios.post('/submit', form, {
+      await axios.post(`${process.env.BACKEND_URL}/submit`, form, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

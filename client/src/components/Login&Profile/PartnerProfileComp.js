@@ -14,7 +14,7 @@ const PartnerProfileComp = () => {
   useEffect(() => {
     const fetchPartnerDetails = async () => {
       try {
-        const response = await axios.get('/giveloggedpartnerdata');
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/giveloggedpartnerdata`);
         setPartner(response.data);
       } catch (error) {
         console.error('Error fetching partner details:', error);
@@ -24,7 +24,7 @@ const PartnerProfileComp = () => {
 
     const fetchPartnerOrders = async () => {
       try {
-        const response = await axios.get('/partnerorder');
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/partnerorder`);
         if (response.data && Array.isArray(response.data)) {
           setOrders(response.data);
         }
@@ -39,7 +39,7 @@ const PartnerProfileComp = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post('/logout');
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/logout`);
       toast.success("Logout Successful");
       navigate('/login');
     } catch (error) {
@@ -57,7 +57,7 @@ const PartnerProfileComp = () => {
           label: 'Yes',
           onClick: async () => {
             try {
-              await axios.put('/partnerordercomplete', { orderId, partnerid: partner._id });
+              await axios.put(`${process.env.REACT_APP_BACKEND_URL}/partnerordercomplete`, { orderId, partnerid: partner._id });
               toast.success('Order marked as complete');
               window.location.reload();
             } catch (error) {
@@ -83,7 +83,7 @@ const PartnerProfileComp = () => {
           label: 'Yes',
           onClick: async () => {
             try {
-              await axios.put('/partnerordercancel',{ orderId, partnerId: partner._id }
+              await axios.put(`${process.env.REACT_APP_BACKEND_URL}/partnerordercancel`,{ orderId, partnerId: partner._id }
               );
               toast.success('Order cancelled successfully');
               window.location.reload();

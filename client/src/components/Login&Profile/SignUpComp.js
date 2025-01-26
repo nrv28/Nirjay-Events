@@ -15,7 +15,7 @@ const SignUpForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/signuproute', {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/signuproute`, {
         email,
         password,
         phone,

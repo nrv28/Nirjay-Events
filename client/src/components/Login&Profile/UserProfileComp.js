@@ -13,7 +13,7 @@ const UserProfileComp = () => {
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
-        const response = await axios.get('/giveloggeduserdata');
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/giveloggeduserdata`);
         setUser(response.data);
       } catch (error) {
         console.error('Error fetching user details:', error);
@@ -23,7 +23,7 @@ const UserProfileComp = () => {
 
     const fetchUserOrders = async () => {
       try {
-        const response = await axios.get('/userorder');
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/userorder`);
         if (response.data && Array.isArray(response.data)) {
           setOrders(response.data);
         }
@@ -38,7 +38,7 @@ const UserProfileComp = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post('/logout');
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/logout`);
       toast.success('Logout Successful');
       navigate('/login');
     } catch (error) {
@@ -55,7 +55,7 @@ const UserProfileComp = () => {
           label: 'Yes',
           onClick: async () => {
             try {
-              await axios.put('/partnerordercancel', { orderId });
+              await axios.put(`${process.env.REACT_APP_BACKEND_URL}/partnerordercancel`, { orderId });
               setOrders(prevOrders =>
                 prevOrders.map(order =>
                   order._id === orderId ? { ...order, status: -1 } : order

@@ -13,12 +13,12 @@ const LoginForm = () => {
   // we can params also instead of useLocation
   const location = useLocation();
   const redirectTo = location.state?.redirectTo;
-
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const route = isPartner ? '/partnerlogin' : '/loginroute';
+      const route = isPartner ? `${process.env.REACT_APP_BACKEND_URL}/partnerlogin` :  `${process.env.REACT_APP_BACKEND_URL}/loginroute` ;
       const response = await axios.post(route, {
         email,
         password,

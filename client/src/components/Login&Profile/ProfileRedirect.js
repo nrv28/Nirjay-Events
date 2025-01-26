@@ -8,13 +8,13 @@ const ProfileRedirect = () => {
     useEffect(() => {
         const fetchLoggedUserData = async () => {
           try {
-            const userResponse = await axios.get('/giveloggeduserdata');
+            const userResponse = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/giveloggeduserdata`);
             if (userResponse.data) {
               navigate('/userprofile');
             }
           } catch (error) {
             try {
-              const partnerResponse = await axios.get('/giveloggedpartnerdata');
+              const partnerResponse = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/giveloggedpartnerdata`);
               if (partnerResponse.data) {
                 navigate('/partnerprofile');
               }
